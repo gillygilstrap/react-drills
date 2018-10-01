@@ -3,19 +3,46 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+    constructor() {
+      super()
+      this.state = {
+        userInput: '',
+        passwordInput: '',
+
+      }
+      this.userInputUpdater = this.userInputUpdater.bind(this)
+      this.passwordInputUpdater = this.passwordInputUpdater.bind(this)
+      this.alertValues = this.alertValues.bind(this)
+    }
+
+    userInputUpdater(event) {
+      this.setState({
+        userInput: event.target.value
+      })
+    }
+    passwordInputUpdater(event) {
+      this.setState({
+        passwordInput: event.target.value
+      })
+    }
+    alertValues() {
+      alert(this.state.userInput + ' '  +this.state.passwordInput)
+    }
+
+
+
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+          <input onChange={this.userInputUpdater} value={this.state.userInput}/>
+          <input type="password"onChange={this.passwordInputUpdater} value={this.state.passwordInput}/>
+          <button onClick={this.alertValues}>Click Me!!!</button>
       </div>
     );
   }
 }
+          
 
 export default App;
+
